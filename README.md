@@ -1,9 +1,11 @@
 ### Code for naacl-2015 paper: Deep Multilingual Correlation for Improved Word Embeddings 
 Author: Ang Lu
+
 Based on work of Manaal Faruqui and Weiran Wang
 
 ###Requirement:
 Python 2.7
+
 Matlab from shell
 
 ###Data:
