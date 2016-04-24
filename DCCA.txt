@@ -1,0 +1,53 @@
+MATLAB package for Deep Canonical Correlation Analysis
+
+(C) 2015 by Weiran Wang, Raman Arora, Karen Livescu and Jeff Bilmes
+
+This Matlab code implements the Deep Canonical Correlation Analysis (DCCA)
+  algorithm described in the paper:
+
+  Weiran Wang, Raman Arora, Karen Livescu, and Jeff Bilmes. 
+  Unsupervised learning of acoustic features via deep canonical correlation analysis. 
+  IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) 2015.
+
+DCCA was originally proposed in the paper:
+
+  Galen Andrew, Raman Arora, Jeff Bilmes, and Karen Livescu.
+  Deep Canonical Correlation Analysis.
+  The 30th International Conference on Machine Learning (ICML) 2013.
+
+Quick start:
+- demo.m: demonstrates the application of linear/kernel/deep CCA on left/right halves 
+  of MNIST images as the two views.
+
+List of functions:
+- DCCA_corr.m: computes the total canonical correlation (by running linear CCA) 
+  between two views, and the gradient of the total correlation with respect to 
+  the inputs.
+- DCCA_grad.m: computes the gradient of the total correlation with respect to the 
+  neural network weights for each view.
+- DCCAtrain_SGD.m: DCCA training with stochastic minibatch optimization.
+- DCCAtrain_LBFGS.m: DCCA training with L-BFGS (Limited memory BFGS).
+- linCCA.m: linear CCA.
+- randKCCA.m: randomized kernel CCA, proposed in 
+  David Lopez-Paz, Suvrit Sra, Alex Smola, Zoubin Ghahramani, and Bernhard Schoelkopf.
+  Randomized Nonlinear Component Analysis.
+  The 31st International Conference on Machine Learning (ICML) 2014.
+- createMNIST.m: generates the halved MNIST images used in demo.m (the random 
+  seed used to generate our data is saved in demoseed.mat, so that you can 
+  achieve exactly the same result).
+
+The following are used internally by other functions (in ./deepnet)
+- deepnetfwd.m: feeds forward the inputs through deep neural networks to obtain 
+  outputs.
+- deepnetinit.m: initializes the neural network weight parameters.
+- Olbfgs.m: a wrapper function for Mark Schmidt's L-BFGS code in his 'minfunc' 
+  package.
+
+External packages/data:
+- mnist_all.mat: all MNIST images in MATLAB format can be downloaded from 
+  Sam Roweis's webpage http://www.cs.nyu.edu/~roweis/data.html.
+- L-BFGS: the minFunc package by Mark Schmidt (included in ./deepnet/LBFGS).
+  The webpage for 'minFunc' is 
+    http://www.di.ens.fr/~mschmidt/Software/minFunc.html
+  and the software is distributed under a FreeBSD-style license, see
+    http://www.cs.ubc.ca/~schmidtm/Software/copyright.html
